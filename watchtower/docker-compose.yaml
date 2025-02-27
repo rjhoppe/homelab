@@ -3,10 +3,10 @@ services:
   watchtower:
     image: containrrr/watchtower
     environment:
-      WATCHTOWER_CLEANUP=true
-      WATCHTOWER_INCLUDE_STOPPED=true
-      WATCHTOWER_POLL_INTERVAL=86400
-      WATCHTOWER_REVIVE_STOPPED=true
-    restart: never
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_POLL_INTERVAL=86400
+      - WATCHTOWER_REVIVE_STOPPED=true
+    restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
