@@ -2,16 +2,16 @@ version: "3.9"
 services:
   glances:
     container_name: glances
-    image: nicolargo/glances:latest-full
+    image: nicolargo/glances:latest
     mem_limit: 4g
     cpu_shares: 768
     security_opt:
       - no-new-privileges:true
     pid: host
-    network_mode: host
+    # network_mode: host -> only for pve
     restart: on-failure:3
     ports:
-      - 61208:61208
+      - "61208:61208"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
