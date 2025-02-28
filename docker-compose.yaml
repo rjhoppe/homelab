@@ -44,3 +44,22 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
+# glances
+version: "3.9"
+services:
+  glances:
+    container_name: glances
+    image: nicolargo/glances:latest
+    mem_limit: 4g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:true
+    pid: host
+    restart: on-failure:3
+    ports:
+      - "127.0.0.1:61208:61208"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      GLANCES_OPT: -w
+
