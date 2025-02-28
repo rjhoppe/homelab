@@ -1,0 +1,46 @@
+# TODO - reorganize
+# astro
+version: "3"
+services:
+  app:
+    image: rickjhoppe/astro-portfolio:latest
+    container_name: astro-portfolio
+    ports:
+      - "127.0.0.1:4321:4321"
+    volumes:
+      - sqlite-data:/data
+      - meta-data:/app/data/meta
+      - db-data:/app/data/db
+
+volumes:
+  sqlite-data:
+  meta-data:
+  db-data:
+
+# dozzle
+version: "3"
+services:
+  app:
+    container_name: dozzle
+    image: amir20/dozzle:v8.11.7
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "127.0.0.1:8888:8080"
+
+# watchtower
+version: '3'
+services:
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_POLL_INTERVAL=86400
+      - WATCHTOWER_REVIVE_STOPPED=true
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
