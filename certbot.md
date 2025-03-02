@@ -3,6 +3,8 @@ To add a new subdomain run these cmds
 sudo certbot certonly --nginx -d sub.domain.dev
 sudo nano /etc/nginx/sites-available/sub.domain.dev
 sudo ln -s /etc/nginx/sites-available/sub.domain.dev /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo nginx reload
 sudo certbot install --cert-name sub.domain.dev
 ```
 
@@ -24,7 +26,7 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-REAL-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $schema;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 ```
