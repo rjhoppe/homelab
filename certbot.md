@@ -4,7 +4,7 @@ sudo certbot certonly --nginx -d sub.domain.dev
 sudo nano /etc/nginx/sites-available/sub.domain.dev
 sudo ln -s /etc/nginx/sites-available/sub.domain.dev /etc/nginx/sites-enabled/
 sudo nginx -t
-sudo nginx reload
+sudo systemctl reload nginx
 sudo certbot install --cert-name sub.domain.dev
 ```
 
