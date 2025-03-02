@@ -63,3 +63,32 @@ services:
     environment:
       GLANCES_OPT: -w
 
+# mumble
+version: '3.3'
+services:
+    mumble-server:
+        image: mumblevoip/mumble-server:v1.4.230-6
+        container_name: murmur
+        hostname: murmur
+        restart: always
+        volumes:
+            - type: bind
+              source: ./data/mumble
+              target: /data
+              read_only: false
+            - type: bind
+              source: ./data/certificates
+              target: /certificates
+              read_only: false
+        environment:
+            MUMBLE_CONFIG_SSL_CERT: /certificates/cert.pem
+            MUMBLE_CONFIG_SSL_KEY: /certificates/key.pem
+            MUMBLE_SUPERUSER_PASSWORD: <your-superuser-password>
+            MUMBLE_CONFIG_SERVERPASSWORD: <your-server-password>
+            MUMBLE_CONFIG_USERS: 10 # Max amount of users that can connect at the same time
+            MUMBLE_CONFIG_USERSPERCHANNEL: 10  # Means unlimited if zero
+            MUMBLE_CONFIG_WELCOMETEXT: "Oh god, not this fucking guy"
+            MUMBLE_CONFIG_ALLOWHTML: true
+        ports:
+            - 64738:64738/tcp
+            - 64738:64738/udp
