@@ -11,6 +11,9 @@ Bare bones NGINX config (before certbot install)
 
 ```
 server {
+    listen 80;
+    listen [::]:80;
+
     server_name <subdomain.domain.com>;
     allow <your IP address>;
     deny all;
