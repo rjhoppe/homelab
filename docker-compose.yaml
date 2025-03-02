@@ -90,5 +90,5 @@ services:
             MUMBLE_CONFIG_WELCOMETEXT: "Oh god, not this fucking guy"
             MUMBLE_CONFIG_ALLOWHTML: true
         ports:
-            - 64738:64738/tcp
-            - 64738:64738/udp
+            - 127.0.0.1:64738:64738/tcp
+            - 127.0.0.1:64738:64738/udp
