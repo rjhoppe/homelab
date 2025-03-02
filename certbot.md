@@ -7,7 +7,7 @@ sudo certbot install --cert-name sub.domain.dev
 
 NOTE: Must add a new DNS A record to your DNS provider of the subdomain first or else certbot will fail the validation challenge
 
-Bare bones NGINX config
+Bare bones NGINX config (before certbot install)
 
 ```
 server {
