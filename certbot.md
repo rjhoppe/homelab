@@ -1,3 +1,8 @@
+Check active ssl certs
+```
+sudo ls -l /etc/letsencrypt/live/ 
+```
+
 To add a new subdomain run these cmds
 ```
 sudo certbot certonly --nginx -d sub.domain.dev
