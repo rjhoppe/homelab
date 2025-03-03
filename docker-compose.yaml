@@ -96,3 +96,19 @@ services:
         ports:
             - 127.0.0.1:64738:64738/tcp
             - 127.0.0.1:64738:64738/udp
+
+# ntfy
+version: '3'
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name:
+    command: serve
+    environment: 
+      - TZ=EST
+    volumes:
+      - /data/ntfy/cache:/var/cache/ntfy
+      - /data/ntfy/config:/etc/ntfy
+    ports:
+      - 127.0.0.1:7200:80
+    restart: unless-stopped
