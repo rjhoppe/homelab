@@ -24,6 +24,8 @@ services:
     container_name: dozzle
     image: amir20/dozzle:v8.11.7
     restart: on-failure:3
+    environment:
+      - TZ=America/New_York
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
@@ -36,6 +38,7 @@ services:
     container_name: watchtower
     image: containrrr/watchtower
     environment:
+      - TZ=America/New_York
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_STOPPED=true
       - WATCHTOWER_POLL_INTERVAL=86400
@@ -56,6 +59,8 @@ services:
       - no-new-privileges:true
     pid: host
     restart: on-failure:3
+    environment: 
+      - TZ=America/New_York
     ports:
       - "127.0.0.1:61208:61208"
     volumes:
@@ -105,7 +110,7 @@ services:
     container_name:
     command: serve
     environment: 
-      - TZ=EST
+      - TZ=America/New_York
     # Left side refers to the path on the host
     # Right side refers to the path on the container
     volumes:
