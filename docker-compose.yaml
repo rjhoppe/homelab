@@ -106,8 +106,12 @@ services:
     command: serve
     environment: 
       - TZ=EST
+    # Left side refers to the path on the host
+    # Right side refers to the path on the container
     volumes:
+      # Maps cache dir from host to container
       - /data/ntfy/cache:/var/cache/ntfy
+      # Maps config dir from host to container
       - /data/ntfy/config:/etc/ntfy
     ports:
       - 127.0.0.1:7200:80
