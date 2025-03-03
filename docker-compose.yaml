@@ -4,6 +4,7 @@ version: "3"
 services:
   app:
     image: rickjhoppe/astro-portfolio:latest
+    restart: on-failure:3
     container_name: astro-portfolio
     ports:
       - "127.0.0.1:4321:4321"
@@ -11,7 +12,6 @@ services:
       - sqlite-data:/data
       - meta-data:/app/data/meta
       - db-data:/app/data/db
-
 volumes:
   sqlite-data:
   meta-data:
@@ -23,7 +23,7 @@ services:
   app:
     container_name: dozzle
     image: amir20/dozzle:v8.11.7
-    restart: unless-stopped
+    restart: on-failure:3
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
@@ -70,7 +70,7 @@ services:
         image: mumblevoip/mumble-server:v1.4.230-6
         container_name: murmur
         hostname: murmur
-        restart: always
+        restart: on-failure:3
         user: mumble-server
         volumes:
             - type: bind
@@ -115,4 +115,4 @@ services:
       - /data/ntfy/config:/etc/ntfy
     ports:
       - 127.0.0.1:7200:80
-    restart: unless-stopped
+    restart: on-failure:3
