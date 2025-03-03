@@ -71,7 +71,7 @@ services:
         container_name: murmur
         hostname: murmur
         restart: always
-        user: root
+        user: mumble-server
         volumes:
             - type: bind
               source: ./data/mumble
