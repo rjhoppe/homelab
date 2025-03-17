@@ -76,7 +76,6 @@ services:
         container_name: mumble
         hostname: murmur
         restart: on-failure:3
-        user: mumble-server
         volumes:
             - type: bind
               source: ./data/mumble
