@@ -83,7 +83,7 @@ services:
               target: /data
               read_only: false
             - type: bind
-              source: ./data/certificates
+              source: /etc/letsencrypt/live/mumble.rjhoppe.dev
               target: /certificates
               read_only: false
         environment:
