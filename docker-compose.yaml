@@ -95,6 +95,8 @@ services:
             MUMBLE_CONFIG_USERNAME: '[ -=\\w\\[\\]\\{\\}\\(\\)\\@\\|\\.]+'
             MUMBLE_CONFIG_CHANNELNAME: '[ \\-=\\w\\#\\[\\]\\{\\}\\(\\)\\@\\|\\%\\'']+'
             MUMBLE_CONFIG_REGISTERNAME: Big Daddies Club
+            MUMBLE_REGISTERSERVER: 1
+            MUMBLE_REGISTERURL: mumble.rjhoppe.dev
             MUMBLE_VERBOSE: 1
         ports:
             - 127.0.0.1:64738:64738/tcp
