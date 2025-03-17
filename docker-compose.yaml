@@ -76,23 +76,22 @@ services:
         container_name: mumble
         hostname: murmur
         restart: on-failure:3
+        user: root
         volumes:
             - type: bind
               source: ./data/mumble
               target: /data
               read_only: false
             - type: bind
-              source: /etc/letsencrypt/live/mumble.rjhoppe.dev
+              source: /etc/letsencrypt/archive/mumble.rjhoppe.dev
               target: /certificates
               read_only: false
         environment:
-            MUMBLE_CONFIG_SSL_CERT: /certificates/fullchain.pem
-            MUMBLE_CONFIG_SSL_KEY: /certificates/privkey.pem
-            MUMBLE_SUPERUSER_PASSWORD: <your-superuser-password>
-            MUMBLE_CONFIG_SERVERPASSWORD: <your-server-password>
+            MUMBLE_CONFIG_SSL_CERT: /certificates/fullchain1.pem
+            MUMBLE_CONFIG_SSL_KEY: /certificates/privkey1.pem
             MUMBLE_CONFIG_USERS: 10 # Max amount of users that can connect at the same time
             MUMBLE_CONFIG_USERSPERCHANNEL: 10  # Means unlimited if zero
-            MUMBLE_CONFIG_WELCOMETEXT: "Oh god, not this fucking guy"
+            MUMBLE_CONFIG_WELCOME_TEXT: ""
             MUMBLE_CONFIG_USERNAME: '[ -=\\w\\[\\]\\{\\}\\(\\)\\@\\|\\.]+'
             MUMBLE_CONFIG_CHANNELNAME: '[ \\-=\\w\\#\\[\\]\\{\\}\\(\\)\\@\\|\\%\\'']+'
             MUMBLE_CONFIG_REGISTERNAME: Big Daddies Club
