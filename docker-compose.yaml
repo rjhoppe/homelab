@@ -102,6 +102,11 @@ services:
             - 127.0.0.1:64738:64738/tcp
             - 127.0.0.1:64738:64738/udp
 
+# mumble env vars to pass in
+MUMBLE_SUPERUSER_PASSWORD
+MUMBLE_CONFIG_SERVERPASSWORD
+MUMBLE_REGISTERPASSWORD
+
 # ntfy
 version: '3'
 services:
