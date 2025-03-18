@@ -59,13 +59,12 @@ services:
       - no-new-privileges:true
     pid: host
     restart: on-failure:3
-    environment: 
-      - TZ=America/New_York
     ports:
       - "127.0.0.1:61208:61208"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
+      TZ: America/New_York
       GLANCES_OPT: -w
 
 # mumble
