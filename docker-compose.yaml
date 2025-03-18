@@ -69,10 +69,10 @@ services:
       GLANCES_OPT: -w
 
 # mumble
-version: '3.3'
+version: '3.8'
 services:
     mumble-server:
-        image: mumblevoip/mumble-server:v1.4.230-6
+        image: mumblevoip/mumble-server:latest
         container_name: mumble
         hostname: murmur
         restart: on-failure:3
@@ -94,18 +94,15 @@ services:
             MUMBLE_CONFIG_WELCOME_TEXT: ""
             MUMBLE_CONFIG_USERNAME: '[ -=\\w\\[\\]\\{\\}\\(\\)\\@\\|\\.]+'
             MUMBLE_CONFIG_CHANNELNAME: '[ \\-=\\w\\#\\[\\]\\{\\}\\(\\)\\@\\|\\%\\'']+'
-            MUMBLE_CONFIG_REGISTERNAME: Big Daddies Club
-            MUMBLE_REGISTERSERVER: 1
-            MUMBLE_REGISTERURL: mumble.rjhoppe.dev
+            MUMBLE_SUPERUSER_PASSWORD: "Test"
+            MUMBLE_REGISTERSERVER: 0
             MUMBLE_VERBOSE: 1
         ports:
-            - 127.0.0.1:64738:64738/tcp
-            - 127.0.0.1:64738:64738/udp
+            - 64738:64738
+            - 64738:64738/udp
 
 # mumble env vars to pass in
 MUMBLE_SUPERUSER_PASSWORD
-MUMBLE_CONFIG_SERVERPASSWORD
-MUMBLE_REGISTERPASSWORD
 
 # ntfy
 version: '3'
