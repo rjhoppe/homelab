@@ -24,11 +24,7 @@ sudo ufw reload
 ```
 
 Allow from any to a specific port (for testing only)
-```
-sudo ufw allow from any to [port]/[protocol]
-```
-
 EX:
 ```
-sudo ufw allow from any to 64738/udp
+sudo ufw allow from any to any port 80 proto tcp
 ```
