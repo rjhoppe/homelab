@@ -17,6 +17,25 @@ volumes:
   meta-data:
   db-data:
 
+# ntfy
+version: "2.3"
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: ntfy
+    command:
+      - serve
+    environment:
+      - TZ=America/New_York   # optional: set desired timezone
+    user: 1003:1003 # replace with the user/group or uid/gid
+    volumes:
+      - ./cache:/var/cache/ntfy
+      - ./config:/etc/ntfy
+      - ./db:/var/lib/ntfy/
+    ports:
+      - 8000:80 # exposed on port 8000 (you can change it)
+    restart: unless-stopped
+
 # dozzle
 version: "3"
 services:
