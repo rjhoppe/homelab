@@ -22,3 +22,9 @@ View logs
 ```
 sudo cat /var/log/nginx/error.log
 ```
+
+To enable websockets (specifically for ntfy), add this to the location section:
+```
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection "Upgrade";
+```
