@@ -62,6 +62,10 @@ services:
       - WATCHTOWER_INCLUDE_STOPPED=true
       - WATCHTOWER_POLL_INTERVAL=86400
       - WATCHTOWER_REVIVE_STOPPED=true
+      - WATCHTOWER_TIMEOUT=60s
+      - WATCHTOWER_LOG_FORMAT=pretty
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_URL=ntfy://ntfy.rjhoppe.dev/[your-topic-here]?scheme=https
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
