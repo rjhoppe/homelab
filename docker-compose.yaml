@@ -172,6 +172,12 @@ services:
     restart: on-failure:3
     ports:
       - "50007:50007"
+    environment:
+      - TOKEN=TOKENVAL
+      - BOT_PREFIX=!
+      - GUILD_ID=GUILDID
+      - TEXT_CHAN_ID=TEXT_CHAN_ID
+      - LOG_LEVEL=DEBUG
 
 # umami
 version: "3"
