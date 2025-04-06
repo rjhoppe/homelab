@@ -173,9 +173,9 @@ services:
     ports:
       - "50007:50007"
     environment:
-      - TOKEN=TOKENVAL
+      - TOKEN=TOKEN_VAL
       - BOT_PREFIX=!
-      - GUILD_ID=GUILDID
+      - GUILD_ID=GUILD_ID
       - TEXT_CHAN_ID=TEXT_CHAN_ID
       - LOG_LEVEL=DEBUG
 
