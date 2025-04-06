@@ -146,6 +146,33 @@ services:
       - 127.0.0.1:7200:80
     restart: on-failure:3
 
+# uptime-kuma
+version: '3'
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: on-failure:3
+    ports:
+      - "3010:3001"
+    volumes:
+      - uptime-kuma:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  uptime-kuma:
+
+
+# aoe2-bot
+version: '3'
+services:
+  aoe2-bot:
+    image: rickjhoppe/aoe2-bot
+    container_name: aoe2-bot
+    restart: on-failure:3
+    ports:
+      - "50007:50007"
+
 # umami
 version: "3"
 services:
