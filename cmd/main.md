@@ -13,7 +13,12 @@ Start portainer
 sudo docker run -d -p 127.0.0.1:9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce
 ```
 
-Get WireGuard Docker location
+Get WireGuard (wg-easy) Docker location
 ```
 /docker/wg-easy
+```
+
+Run wg-easy
+```
+docker-compose up -d
 ```
