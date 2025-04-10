@@ -242,6 +242,16 @@ services:
     restart: unless-stopped
 
 # wg-easy
+
+# Config steps
+# Make sure docker-compose is installed 
+# mdkir /docker/wg-easy
+# cd /docker/wg-easy
+# nano docker-compose.yaml
+# Paste in docker-compose below, make sure ports are different on host and client
+# [sudo] docker-compose up -d
+# [sudo] docker-compose down
+
 version: "3"
 
 services:
@@ -249,9 +259,9 @@ services:
     image: weejewel/wg-easy
     container_name: wg-easy
     environment: 
-      - WG_HOST=
-      - PASSWORD=
-      - WG_DEFAULT_DNS=
+      - WG_HOST={WG_HOST}
+      - PASSWORD={PASSWORD}
+      - WG_DEFAULT_DNS=1.1.1.1,1.0.0.1
     ports:
       - "51820:51820/udp"
       - "127.0.0.1:51821:51821/tcp"
