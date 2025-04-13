@@ -277,3 +277,18 @@ services:
       - net.ipv4.ip_forward=1
       - net.ipv4.conf.all.src_valid_mark=1
 
+
+services:
+  wyl:
+    container_name: watchyourlan
+    image: aceberg/watchyourlan
+    network_mode: "host"      
+    restart: unless-stopped
+    volumes:
+    - ~/.dockerdata/wyl:/data/WatchYourLAN
+    environment:
+      TZ: America/New_York           # required: needs your TZ for correct time
+      IFACES: "eth0"
+      SHOUTRRR_URL: {NTFY_HERE} # optional, set url to notify
+      THEME: "darly"                    # optional
+      COLOR: "dark"                     # optional
