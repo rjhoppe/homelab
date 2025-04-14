@@ -292,3 +292,25 @@ services:
       SHOUTRRR_URL: {NTFY_HERE} # optional, set url to notify
       THEME: "darly"                    # optional
       COLOR: "dark"                     # optional
+
+# crowdsec
+services:
+  crowdsec:
+    container_name: crowdsec
+    image: crowdsecurity/crowdsec
+    restart: always
+    environment:
+      COLLECTIONS: "crowdsecurity/nginx"
+      GID: "${GID-1000}"
+    volumes:
+      - /docker/crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml
+      - logs:/var/log/nginx
+      - crowdsec-db:/var/lib/crowdsec/data/
+      - crowdsec-config:/etc/crowdsec/
+volumes:
+  logs:
+    driver: local
+  crowdsec-db:
+    driver: local
+  crowdsec-config:
+    driver: local
