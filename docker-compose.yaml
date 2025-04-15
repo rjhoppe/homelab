@@ -314,3 +314,14 @@ volumes:
     driver: local
   crowdsec-config:
     driver: local
+
+# wastebin
+services:
+  wastebin:
+    container_name: wastebin
+    restart: always
+    ports:
+      - "7088:8088"
+    volumes:
+      - './data:/data'
+    image: 'quxfoo/wastebin:latest'
