@@ -325,3 +325,17 @@ services:
     volumes:
       - './data:/data'
     image: 'quxfoo/wastebin:latest'
+
+# patrick-star
+services:
+  patrick-star:
+    container_name: patrick-star
+    image: rickjhoppe/patrick-star:latest
+    environment:
+      - URL=
+      - STORE_PAGE1=
+      - STORE_PAGE2=
+      - STORE_PAGE3=
+      - STORE_PAGE4=
+      - STORE_PAGE5=
+      - NTFY_URL=
