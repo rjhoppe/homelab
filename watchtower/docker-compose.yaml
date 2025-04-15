@@ -1,11 +1,18 @@
 services:
   watchtower:
+    container_name: watchtower
     image: containrrr/watchtower
     environment:
+      - TZ=America/New_York
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_STOPPED=true
       - WATCHTOWER_POLL_INTERVAL=86400
       - WATCHTOWER_REVIVE_STOPPED=true
+      - WATCHTOWER_TIMEOUT=60s
+      - WATCHTOWER_LOG_FORMAT=pretty
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_URL=ntfy://{your-ntfy-domain}/watchtower
+      # - WATCHTOWER_RUN_ONCE=true - for testing
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
