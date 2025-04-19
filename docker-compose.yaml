@@ -1,6 +1,5 @@
 # TODO - reorganize
 # astro-portfolio
-version: "3"
 services:
   app:
     image: rickjhoppe/astro-portfolio:latest
@@ -18,7 +17,6 @@ volumes:
   db-data:
 
 # ntfy
-version: "2.3"
 services:
   ntfy:
     image: binwiederhier/ntfy
@@ -37,7 +35,6 @@ services:
     restart: unless-stopped
 
 # dozzle
-version: "3"
 services:
   app:
     container_name: dozzle
@@ -51,7 +48,6 @@ services:
       - "127.0.0.1:8888:8080"
 
 # watchtower
-version: '3'
 services:
   watchtower:
     container_name: watchtower
@@ -71,7 +67,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
 # glances
-version: "3.9"
 services:
   glances:
     container_name: glances
@@ -91,7 +86,6 @@ services:
       GLANCES_OPT: -w
 
 # mumble
-version: '3.8'
 services:
     mumble-server:
         image: mumblevoip/mumble-server:latest
@@ -126,28 +120,7 @@ services:
 # mumble env vars to pass in
 MUMBLE_SUPERUSER_PASSWORD
 
-# ntfy
-version: '3'
-services:
-  ntfy:
-    image: binwiederhier/ntfy
-    container_name: ntfy
-    command: serve
-    environment: 
-      - TZ=America/New_York
-    # Left side refers to the path on the host
-    # Right side refers to the path on the container
-    volumes:
-      # Maps cache dir from host to container
-      - /data/ntfy/cache:/var/cache/ntfy
-      # Maps config dir from host to container
-      - /data/ntfy/config:/etc/ntfy
-    ports:
-      - 127.0.0.1:7200:80
-    restart: on-failure:3
-
 # uptime-kuma
-version: '3'
 services:
   uptime-kuma:
     image: louislam/uptime-kuma:1
@@ -164,7 +137,6 @@ volumes:
 
 
 # aoe2-bot
-version: '3'
 services:
   aoe2-bot:
     image: rickjhoppe/aoe2-bot
@@ -180,7 +152,6 @@ services:
       - LOG_LEVEL=DEBUG
 
 # umami
-version: "3"
 services:
   umami:
     image: ghcr.io/umami-software/umami:postgresql-latest
@@ -254,8 +225,6 @@ services:
 # [sudo] docker-compose up -d
 # [sudo] docker-compose down
 
-version: "3"
-
 services:
   wg-easy:
     image: weejewel/wg-easy
@@ -302,6 +271,8 @@ services:
     environment:
       COLLECTIONS: "crowdsecurity/nginx"
       GID: "${GID-1000}"
+    ports:
+      - "8081:8080"
     volumes:
       - /docker/crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml
       - logs:/var/log/nginx
