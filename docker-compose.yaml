@@ -310,3 +310,35 @@ services:
       - STORE_PAGE4=
       - STORE_PAGE5=
       - NTFY_URL=
+
+# ntopng
+services:
+  ntopng:
+    container_name: ntopng
+    image: vimagick/ntopng
+    command:
+      - --community
+      - -d
+      - /var/lib/ntopng
+      - -i
+      - eth0
+      - -r
+      - 127.0.0.1:6379@0
+      - -w
+      - 0.0.0.0:9888
+    volumes:
+      - ntopng_data:/var/lib/ntopng
+    network_mode: host
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    network_mode: host
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  ntopng_data:
+  redis_data:
+
