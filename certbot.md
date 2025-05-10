@@ -77,3 +77,6 @@ Cronjob
 
 Don't forget to run:
 `chmod +x /home/rhoppe/scripts/certbot-renew.sh`
+
+To manually run:
+`/home/rhoppe/scripts/certbot-renew.sh`
