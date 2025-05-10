@@ -35,3 +35,42 @@ server {
     }
 }
 ```
+
+Cronjob and script to auto-renew certs:
+
+certbot-renew.sh
+```
+#!/bin/bash
+
+# Run certbot and capture output
+RENEW_OUTPUT=$(certbot renew 2>&1)
+
+# Path to your Nginx configuration file (optional check)
+NGINX_CONF="/etc/nginx/nginx.conf"
+
+# Check if any certificate was renewed
+if echo "$RENEW_OUTPUT" | grep -q "Congratulations! Your certificate"; then
+    echo "✅ Certificate was renewed."
+
+    # Reload or start Nginx
+    if systemctl is-active --quiet nginx; then
+        echo "🔄 Nginx is running, reloading..."
+        systemctl reload nginx
+    else
+        echo "▶️ Nginx is not running, starting..."
+        systemctl start nginx
+    fi
+
+    # Send ntfy notification
+    curl -H "Title: SSL Certificate Renewed" \
+         -H "Tags: lock,green" \
+         -d "One or more SSL certificates were renewed and Nginx has been reloaded." \
+         http://127.0.0.1:8000/[YOUR-TOPIC]
+else
+    echo "❌ No certificates were renewed."
+fi
+```
+
+Cronjob
+`crontab -e`
+`30 3 * * * /scripts/certbot-renew.sh >> /var/log/certbot-renew.log 2>&1`
