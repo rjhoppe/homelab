@@ -246,6 +246,23 @@ services:
       - net.ipv4.ip_forward=1
       - net.ipv4.conf.all.src_valid_mark=1
 
+# patrick-star
+services:
+  patrick-star:
+    container_name: patrick-star
+    image: rickjhoppe/patrick-star:latest
+    environment:
+      - URL=
+      - STORE_PAGE1=
+      - STORE_PAGE2=
+      - STORE_PAGE3=
+      - STORE_PAGE4=
+      - STORE_PAGE5=
+      - NTFY_URL=
+      - WEBHOOK=
+    volumes:
+      - ./cache:/app/cache
+
 
 services:
   wyl:
