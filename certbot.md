@@ -72,5 +72,5 @@ fi
 ```
 
 Cronjob
-`crontab -e`
-`30 3 * * * /scripts/certbot-renew.sh >> /var/log/certbot-renew.log 2>&1`
+```crontab -e``` 
+```30 3 * * * /scripts/certbot-renew.sh >> /var/log/certbot-renew.log 2>&1```
